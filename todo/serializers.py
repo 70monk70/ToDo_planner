@@ -9,7 +9,7 @@ class ProjectSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = Project
-        fields = '__all__'
+        fields = ('id' , 'url', 'title', 'link', 'users')
 
 
 class ToDoSerializer(HyperlinkedModelSerializer):
