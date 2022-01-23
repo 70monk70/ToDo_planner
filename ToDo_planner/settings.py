@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_filters',
     'users',
     'todo',
+    'graphene_django',
     'drf_yasg',
 ]
 
@@ -132,6 +133,10 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
+
+GRAPHENE={
+    'SCHEMA': 'ToDo_planner.schema.schema',
+}
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
