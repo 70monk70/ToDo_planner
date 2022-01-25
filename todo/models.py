@@ -16,8 +16,8 @@ class Project(models.Model):
 
 
 class ToDo(models.Model):
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='Проект')
-    creator = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, verbose_name='Автор')
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    creator = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     text = models.TextField('Текст задачи')
     creation_date = models.DateTimeField(verbose_name='Дата создания', auto_now_add=True)
     update_date = models.DateTimeField(verbose_name='Дата обновления', auto_now=True)
