@@ -12,6 +12,9 @@ const ToDo = ({todo}) => {
             <td>
                 {todo.text}
             </td>
+            <td>
+                <button type='button'>Delete</button>
+            </td>
         </tr>
     )
 }
@@ -27,6 +30,9 @@ const ToDosList = ({todos}) => {
             </th>
             <th>
                 Text
+            </th>
+            <th>
+                Delete
             </th>
             {todos.map((todo) => <ToDo todo={todo}/>)}
         </table>

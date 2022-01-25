@@ -16,6 +16,9 @@ const Project = ({project}) => {
             <td>
                 {project.users}
             </td>
+            <td>
+                <button type='button'>Delete</button>
+            </td>
         </tr>
     )
 }
@@ -57,6 +60,9 @@ const ProjectsList = ({projects}) => {
             </th>
             <th>
                 Users
+            </th>
+            <th>
+                Delete
             </th>
             {projects.map((project) => <Project project={project}/>)}
         </table>
