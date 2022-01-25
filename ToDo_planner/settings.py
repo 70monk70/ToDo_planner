@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_filters',
     'users',
     'todo',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -150,13 +151,32 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 100,
-     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated'
-    ],
+     # 'DEFAULT_PERMISSION_CLASSES': [
+     #    'rest_framework.permissions.IsAuthenticated'
+    # ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         # 'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ]
+    ],
+    # http://127.0.0.1:8000/api/authors/
+    # http://127.0.0.1:8000/api/v2/authors/
+    # 'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.URLPathVersioning'
+
+    # http://127.0.0.1:8000/api/authors/v1/
+    # http://127.0.0.1:8000/api/authors/v2/
+    # 'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning'
+
+    # http://v1.somesite.com/api/authors/
+    # http://v2.somesite.com/api/authors/
+    # 'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.HostNameVersioning'
+
+    # http://127.0.0.1:8000/api/authors/
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.QueryParameterVersioning'
 }
+# from rest_framework.versioning import URLPathVersioning
+# from rest_framework.versioning import NamespaceVersioning
+# from rest_framework.versioning import HostNameVersioning
+# from rest_framework.versioning import QueryParameterVersioning
+# from rest_framework.versioning import AcceptHeaderVersioning
