@@ -146,8 +146,8 @@ class App extends React.Component {
                         <Route exact path='/projects' element={<ProjectsList projects={this.state.projects}/>}/>
                         <Route exact path='/todos' element={<ToDosList todos={this.state.todos}/>}/>
                         <Route exact path='/projects/:id/' element={<ProjectDetail projects={this.state.projects}/>}/>
-                        <Route exact path='/projects/:id/' element={<ProjectDetail projects={this.state.projects} delete_project={(id) => this.delete_project(id)}/>}/>
-                        <Route exact path='/todo/:id/' element={<ProjectDetail todo={this.state.projects} delete_todo={(id) => this.delete_todo(id)}/>}/>
+                        <Route exact path='/projects' element={<ProjectsList projects={this.state.projects} delete_project={(id) => this.delete_project(id)}/>}/>
+                        <Route exact path='/todo' element={<ToDosList todos={this.state.todos} delete_todo={(id) => this.delete_todo(id)}/>}/>
                         <Route exact path='/login'
                                element={<LoginForm get_token={(login, password) => this.get_token(login, password)}/>}/>
                         <Route path='/users' element={<Navigate to='/'/>}/>
