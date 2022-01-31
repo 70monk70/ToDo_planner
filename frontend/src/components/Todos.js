@@ -13,7 +13,10 @@ const ToDo = ({todo, delete_todo}) => {
                 {todo.text}
             </td>
             <td>
-                <button onClick={()=>delete_todo(todo.id)} type='button'>Delete</button>
+                {String(todo.isActive)}
+            </td>
+            <td>
+                <button onClick={() => delete_todo(todo.id)} type='button'>Done</button>
             </td>
         </tr>
     )
@@ -32,7 +35,10 @@ const ToDosList = ({todos, delete_todo}) => {
                 Text
             </th>
             <th>
-                Delete
+                Status
+            </th>
+            <th>
+                Done
             </th>
             {todos.map((todo) => <ToDo todo={todo} delete_todo={delete_todo}/>)}
         </table>
