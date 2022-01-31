@@ -4,7 +4,7 @@ from users.models import User
 from todo.models import Project, ToDo
 
 
-class ProjectSerializer(HyperlinkedModelSerializer):
+class ProjectSerializer(ModelSerializer):
     users = PrimaryKeyRelatedField(many=True, queryset=User.objects.all())
 
     class Meta:
@@ -12,8 +12,8 @@ class ProjectSerializer(HyperlinkedModelSerializer):
         fields = ('id' , 'url', 'title', 'link', 'users')
 
 
-class ToDoSerializer(HyperlinkedModelSerializer):
+class ToDoSerializer(ModelSerializer):
 
     class Meta:
         model = ToDo
-        fields = '__all__'
+        fields = ('id', 'project', 'text', 'creator', 'creation_date', 'update_date', 'is_active')
