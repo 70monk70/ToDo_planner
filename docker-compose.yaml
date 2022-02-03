@@ -1,0 +1,35 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres:13.5
+    privileged: true
+    restart: always
+    ports:
+      - 54325:5432
+    environment:
+      POSTGRES_USER: apl
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: ToDo_planner
+
+  backend:
+    build: ./
+    privileged: true
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    environment:
+      DJANGO_SETTINGS_MODULE: 'ToDo_planner.settings.prod'
+    command: bash -c "
+      python manage.py migrate &&
+      gunicorn ToDo_planner.wsgi -b 0.0.0.0:8080
+      "
+
+  ngnix:
+    build: ./ngnix
+    privileged: true
+    ports:
+      - 8000:80
+    depends_on:
+      - backend
